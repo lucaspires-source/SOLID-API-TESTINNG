@@ -4,7 +4,8 @@ import { Appointment } from './appointment'
 test('create a new appointment', () => {
     const startsAt = new Date()
     const endsAt = new Date()
-    endsAt.setDate(endsAt.getDate() + 1)
+    startsAt.setDate(startsAt.getDate() + 1)
+    endsAt.setDate(endsAt.getDate() + 2)
     const appointment = new Appointment({
         customer:'john doe',
         startsAt,
@@ -19,7 +20,8 @@ test('Cannot create a new appointment with end  date Before Start Date', () => {
 
     const startsAt = new Date()
     const endsAt = new Date()
-    endsAt.setDate(endsAt.getDate() - 1)
+    startsAt.setDate(startsAt.getDate() + 2)
+    endsAt.setDate(endsAt.getDate() + 1)
     
     expect(() =>{
         const appointment = new Appointment({
