@@ -22,6 +22,10 @@ get endsAt () {
 }
 
 constructor(props: AppointmentProps) {
+    const {startsAt, endsAt} = props
+    if(endsAt <= startsAt) {
+        throw new Error('It is not possible to make an appointment that ends before it starts')
+    }
     this.props = props
 }
 }
